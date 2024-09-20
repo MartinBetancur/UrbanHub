@@ -1,1 +1,9 @@
+# Ignorar entorno virtual
+venv/
+
+# Archivos de dependencias
 *.pyc
+__pycache__/
+
+# Archivos de configuración de entornos de desarrollo
+.env
