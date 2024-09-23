@@ -3,19 +3,81 @@
 {% block title %}Product List{% endblock %}
 
 {% block content %}
-<h1>Products</h1>
-<div class="row">
-    {% for product in products %}
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <p class="card-text">${{ product.price }}</p>
-                <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">View Details</a>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Nuestros Productos</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description|truncatewords:20 }}</p>
+                    <p class="card-text text-center fw-bold">Precio: ${{ product.price }}</p>
+
+                    <!-- Formulario para agregar al carrito -->
+                    <form class="add-to-cart-form" action="{% url 'add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        {% if product.variations.all %}
+                        <div class="mb-3">
+                            <label for="variation_{{ product.id }}" class="form-label">Variación</label>
+                            <select name="variation" id="variation_{{ product.id }}" class="form-select">
+                                {% for variation in product.variations.all %}
+                                <option value="{{ variation.id }}">
+                                    {{ variation.name }} - {{ variation.value }} (+${{ variation.extra_price }})
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-success btn-lg mb-3">Agregar al carrito</button>
+                    </form>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <!-- Botón para ver detalles -->
+                    <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">Ver detalles</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+
+<!-- Script para manejar las solicitudes AJAX -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Manejar el envío del formulario
+    const forms = document.querySelectorAll('.add-to-cart-form');
+    
+    forms.forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Evitar la recarga de la página
+            const url = form.action;
+            const formData = new FormData(form);
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Actualizar la cantidad total de productos en el carrito
+                    document.getElementById('cart-total-quantity').innerText = `Carrito (${data.total_quantity})`;
+                    
+                    // Actualizar el contenido del carrito
+                    document.querySelector('.cart-body').innerHTML = data.cart_html;
+                    
+                    // Abrir el carrito desplegable
+                    document.getElementById('cart-panel').classList.add('open');
+                    document.getElementById('overlay').classList.add('show');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+</script>
 {% endblock %}

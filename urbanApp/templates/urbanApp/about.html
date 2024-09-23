@@ -1,8 +1,67 @@
 {% extends 'urbanApp/base.html' %}
 
-{% block title %}About{% endblock %}
+{% block title %}About Us{% endblock %}
 
 {% block content %}
-<h1>About Us</h1>
-<p>This is the about page.</p>
+<div class="about-container">
+    <h1>Sobre UrbanHub</h1>
+    <p>
+        UrbanHub es una innovadora plataforma de ecommerce que redefine la experiencia de compra en línea,
+        enfocándose en sneakers, fragancias y hoodies de marcas prestigiosas como Nike, Adidas, Chanel, H&M,
+        y muchas más. Contamos con un diseño intuitivo y una navegación fluida. UrbanHub permite a los usuarios
+        explorar una amplia variedad de productos, agregarlos al carrito y completar el proceso de compra con
+        facilidad.
+    </p>
+    <p>
+        La plataforma combina una presentación visual atractiva con una experiencia de usuario impecable,
+        posicionándose como un referente en el sector de la moda y el lujo online.
+    </p>
+</div>
+
+<!-- Estilos personalizados para la página de "About Us" -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .about-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        color: #4CAF50;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .about-container {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+    }
+</style>
 {% endblock %}

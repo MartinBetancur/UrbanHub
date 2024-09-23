@@ -1,0 +1,33 @@
+{% if cart %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Variación</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, item in cart.items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.variation }}</td>
+            <td>${{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="total">
+    <p><strong>Total:</strong> ${{ total_price }}</p>
+</div>
+
+<div class="cart-footer">
+    <a class="btn btn-success" href="{% url 'checkout' %}">Ir a la caja</a>
+    <a class="btn btn-warning" href="{% url 'clear_cart' %}">Vaciar carrito</a>
+</div>
+{% else %}
+<p>Tu carrito está vacío.</p>
+{% endif %}
