@@ -14,3 +14,18 @@ Primero, clona el repositorio en tu máquina local usando Git:
 git clone https://github.com/usuario/urbanhub.git
 cd urbanhub
 ```
+### 2. Crear y activar el entorno virtual
+
+Crea un entorno virtual para el proyecto y actívalo.
+
+- En Linux/MacOS:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+- En Windows:
+```bash  
+python -m venv venv
+venv\Scripts\activate
+```
