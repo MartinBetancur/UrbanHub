@@ -29,3 +29,25 @@ source venv/bin/activate
 python -m venv venv
 venv\Scripts\activate
 ```
+### 3. Instalar las dependencias
+
+Instala todas las dependencias necesarias usando el archivo `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+### 4. Aplicar las migraciones de la base de datos
+
+Ejecuta las migraciones para configurar la base de datos:
+
+```bash
+python manage.py migrate
+```
+### 5. Ejecutar el servidor de desarrollo
+
+Para ejecutar el proyecto localmente, inicia el servidor de desarrollo de Django:
+
+```bash
+python manage.py runserver
+```
+Luego, abre tu navegador y accede a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
