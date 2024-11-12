@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'urbanApp/style-banner.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+    </header>
+
+    <section class="carousel">
+        <div class="list">
+            <div class="item ">
+                <figure>
+                    <img src="{% static 'img/jordan-header.png' %}">
+                </figure>
+                <div class="content">
+                    <p class="category">
+                        Comfort and style in every step
+                    </p>
+                    <h2>
+                        SNEAKERS
+                    </h2>
+                    <p class="description">
+                        Explore our diverse selection of sneakers. Perfect for every occasion, 
+                        our sneakers combine comfort, durability, and style to keep you looking 
+                        and feeling great.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="{% static 'img/essentials-header.png' %}">
+                </figure>
+                <div class="content">
+                    <p class="category">
+                        Warmth and fashion for any occasion 
+                    </p>
+                    <h2>
+                        HOODIES
+                    </h2>
+                    <p class="description">
+                        Stay cozy and fashionable with our range of hoodies. Perfect for casual
+                        outings or lounging at home, our hoodies offer the ideal blend of warmth, 
+                        comfort, and trendy designs for any wardrobe.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <figure>
+                    <img src="{% static 'img/onemillion-header.png' %}">
+                </figure>
+                <div class="content">
+                    <p class="category">
+                        Scents that define your personality
+                    </p>
+                    <h2>
+                        FRAGRANCES
+                    </h2>
+                    <p class="description">
+                        Discover our premium collection of fragrances. Whether you prefer
+                        fresh, floral, bold, or spicy, our perfumes are crafted to suit your 
+                        unique personality and make a lasting impression.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="arrows">
+            <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="indicators">
+            <div class="number">02</div>
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
