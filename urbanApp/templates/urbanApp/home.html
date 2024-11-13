@@ -201,10 +201,10 @@
             {% if user.is_authenticated %}
                 <form action="{% url 'logout' %}" method="post" class="d-inline">
             {% csrf_token %}
-                <button type="submit" class="category-btn">Cerrar sesión</button>
+                <button type="submit" class="category-btn">Log out</button>
                 </form>
             {% else %}
-                <a class="category-btn" href="{% url 'login' %}">Iniciar sesión</a>
+                <a class="category-btn" href="{% url 'login' %}">Login</a>
             {% endif %}
         </div>
       </div>
