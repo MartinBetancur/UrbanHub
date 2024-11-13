@@ -5,6 +5,8 @@ from . import views
 from .views import register
 from .views import update_cart_quantity
 from .views import cart_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     
@@ -25,4 +27,7 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),  # Ruta para la página de checkout
     path('checkout/complete/', views.checkout_complete, name='checkout_complete'),  # Ruta para completar el checkout
     path('checkout/thank-you/', views.checkout_thank_you, name='checkout_thank_you'),  # Ruta para la página de agradecimiento
-    ]
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
