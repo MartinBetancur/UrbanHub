@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l2emd%=iazo#k$2l6cl_vl^^$&e5966h6*!zm^$ww^h9&mhhx*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['urbanhub-riot.onrender.com']
 
 
 # Application definition
